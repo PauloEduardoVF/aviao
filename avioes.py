@@ -16,13 +16,19 @@ class Avioes:
 
     def rodar_jogo(self):
         while True:
-            for eventos in pygame.event.get():
+            self._verificar_evento()
+            self._atualizar_eventos()
+            self.contr_aviao.blime()
+    
+    def _verificar_evento(self):
+        for eventos in pygame.event.get():
                 if eventos.type == pygame.QUIT:
                     sys.exit()
+
+    def _atualizar_eventos(self):
             pygame.display.flip()
             self.frame.tick(60)
             self.tela.fill(self.cor_fundo)
-            self.contr_aviao.blime()
 
 if __name__ == "__main__":
     jogo = Avioes()
